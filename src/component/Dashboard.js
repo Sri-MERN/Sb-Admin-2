@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom';
 import Card from './Card'
-function Dashboard() {
-    let data = [{
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+function Dashboard({users,setUsers}) {
+    let [data,setData] = useState([{
         title:"Earnings (Monthly)",
         value:"$5000",
         color:"primary",
@@ -29,7 +32,14 @@ function Dashboard() {
         icon:"fa-comments",
         isProgress:false
     }
-]
+])
+    let navigate = useNavigate()
+    //  let handleDelete = (i)=>{
+    //     let newArray=[...users]
+    //     newArray.splice(i,1)
+    //     setUsers(newArray)
+    // }
+
   return <>
          <div id="content-wrapper" className="d-flex flex-column">
 <div id="content">
@@ -46,13 +56,51 @@ function Dashboard() {
                 data.map((e,i)=>{
                     return <Card key={i}
                     input={e}
+                    value={10}
                     />
                 })
             }
         </div>
+        <div>
+          <div className='xontainer-fluid'>
+        <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Dob</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>  
+        {                        
+              users.map((e,i) => {
+                return <tr key={i}>
+                    <td>{i+1}</td>
+                   <td>{e.name}</td> 
+                   <td>{e.email}</td> 
+                   <td>{e.mobile}</td> 
+                   <td>{e.dob}</td> 
+                   <td>
+                   <Button variant="primary" onClick={()=>navigate(`/edit-user/${i}`)}>Edit</Button>
+                   &nbsp;&nbsp; 
+                   <Button variant="danger" onClick={()=>{
+                    let newArray = [...users]
+                    newArray.splice(i,1)
+                    setUsers(newArray)
+                   }}>Delete</Button>
+                  </td>
+                </tr>
+              })                                                                                               
+            }
+      </tbody>
+    </Table>
 
-    </div>
-
+        </div>
+      </div>
+</div>
 </div>
 </div>
   </>

@@ -18,13 +18,11 @@ function Sidebar() {
 <hr className="sidebar-divider my-0"/>
 
 {/* <!-- Nav Item - Dashboard --> */}
-<Link to='./Dashboard'>
-<li className="nav-item active">
+<li className="nav-item active" onClick={()=>navigate('/Dashboard')}>
     <div className="nav-link" >
         <i className="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></div>
 </li>
-</Link>
 
 {/* <!-- Divider --> */}
 <hr className="sidebar-divider"/>
@@ -35,40 +33,36 @@ function Sidebar() {
 </div>
 
 {/* <!-- Nav Item - Pages Collapse Menu --> */}
-<Link to='./AddUser'>
-<li className="nav-item">
+<li className="nav-item" onClick={()=>navigate('/AddUser')}>
     <div className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fa-solid fa-user-plus"></i>
+            <i className="fa-solid fa-user-plus"></i>
         <span>AddUser</span>
     </div>
 </li>
-</Link>
 
-<Link to ='./Profile'>
-<li className="nav-item">
+
+<li className="nav-item" onClick={()=>navigate('/Profile')}>
     <div className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fa-solid fa-address-card"></i>
+            <i className="fa-solid fa-address-card"></i>
         <span>Profile</span>
     </div>
 </li>
-</Link>
 
-<Link to ='./pendingrequest'>
-<li className="nav-item">
+
+<li className="nav-item" onClick={()=>navigate('/PendingRequest')}>
     <div className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fa-solid fa-rotate"></i>
+            <i className="fa-solid fa-rotate"></i>
         <span>Pending request</span>
     </div>
 </li>
-</Link>
 
 <li className="nav-item" onClick={()=>navigate('/Task')}>
     <div className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fa-solid fa-list-check"></i>
+            <i className="fa-solid fa-list-check"></i>
         <span>Tasks</span>
     </div>
 </li>
